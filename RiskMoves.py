@@ -208,7 +208,6 @@ class MoveSet():
                     UI.box3 = ('Select territory to attack from')
                     UI.update()
                     GUI.highlight(base, False)
-##                    GUI.setMap() #redundant
                     return False
                 elif 0 < p[0] < 43:
                     #redistribute - only base or conquered territory
@@ -262,7 +261,6 @@ class MoveSet():
             Data.terrList[terr].units += num
             if base == None:
                 Data.playerList[self.player].units += num
-##            GUI.displayUnits() #redundant?
             if num > 1:
                 UI.box3 = str(num)+' troops added'
             else:
@@ -421,18 +419,7 @@ class MoveSet():
             UI.update()
             return True
         return False
-        
-    #get starting number of troops + card bonuses and place on territories
-##    def startingPlace(self):
-##        UI.box1 = Data.playerList[self.player].name+' - Add Units'
-##        bonus = self.cardChoice(True)
-##        if bonus != None:
-##            troops = Data.addNum()
-##            number = bonus + troops
-##            UI.nextMsg = 'Attack'
-##            UI.update()
-##            logging.info(str(number)+' troops to add')
-##            self.placement(number)
+
     def startingPlace(self):
         self.troops = Data.addNum()
         UI.box1 = Data.playerList[self.player].name+' - '+str(self.troops)+' to Place'
@@ -468,10 +455,9 @@ class MoveSet():
             if Data.terrList[base].units > 1:
                 troops = Data.terrList[base].units - 1
                 Data.terrList[base].units -= troops
-                GUI.displayUnits() #take out if not correct
+                GUI.displayUnits()
                 GUI.drawLines(base, target)
                 self.placement(troops, base, target)
-                #GUI.setMap()
             bonus = self.cardChoice(False)
             if bonus > 0:
                 self.placement(bonus)
@@ -502,7 +488,6 @@ class MoveSet():
                     UI.nextColor = False
                     UI.update()
                     GUI.drawLines(base, None)
-                    UI.numBox() #redundant call?
                     target = self.clickMapSpecific(base)
                     if target != None and target != False:
                         #roll dice, handle results
@@ -541,13 +526,11 @@ class MoveSet():
             if base == None or not base:
                 break 
             else:
-##                GUI.highlight(base, False)
                 troops = Data.terrList[base].units - 1
                 Data.terrList[base].units -= troops
-##                GUI.displayUnits()
                 GUI.highlight(base, False)
                 self.placement(troops, base, False)
-                GUI.setMap() #redundant?
+                GUI.setMap()
 
     #handle for rematch after victory 
     def rematch(self):
@@ -567,7 +550,6 @@ class MoveSet():
                     logging.info('Rematch selected')
                     Data.reset = True
                     self.breakMove()
-                    break #this can probably be removed
             else:
                 continue
 
@@ -583,5 +565,3 @@ class MoveSet():
         else:    
             self.fortify()
 
-#initialize Moves object - do in main?
-#Moves = MoveSet()

@@ -9,12 +9,6 @@ import time
 from RiskData import Data
 from RiskRaw import *
 
-###set logging: default is WARNING
-###change to DEBUG to see all output
-###change to INFO to see output for failed moves/more important updates
-###change to WARNING to only see program issues
-##logging.basicConfig(level=logging.WARNING)
-
 class GUI():
     
     def __init__(self, width=1000, height=612):
@@ -79,7 +73,6 @@ class GUI():
     #functions for making boxes and text
     def makeText(self, msg, s=30):
         font = pygame.font.Font('freesansbold.ttf', s)
-##        text = font.render(msg, True, black)
         text = font.render(msg, False, black)
         return text
 
@@ -87,15 +80,12 @@ class GUI():
     def displayUnits(self):
         self.gameDisplay.blit(self.Map, (0,0))
         UI.legend()
-##        self.gameMap.set_palette(self.palette)
-##        self.gameDisplay.set_palette(self.palette)
         for i in range(1,43):
             units = Data.terrList[i].units
             text = self.makeText(str(units), 20)
             coordinates = Data.terrList[i].coord
             self.gameDisplay.blit(text, coordinates)
         pygame.display.update()
-##        self.gameDisplay.set_palette(self.palette)
 
     #draw lines connecting territories for options to click
     #other = number for one option, False for fortify, None for attack
@@ -156,12 +146,7 @@ class GUI():
             color = Data.playerList[owner].color
         if self.palette[terr] != color: 
             self.palette[terr] = color
-            self.setMap() 
-##          self.Map.set_palette(self.palette)
-##          self.gameDisplay.blit(self.Map, (0,0))
-##          pygame.display.update()
-##          self.displayUnits()
-##          UI.update()        
+            self.setMap()        
 
     #set current palette/static info - used at beginning to set up board
     def currentBoard(self):
@@ -194,7 +179,6 @@ class UI():
     #functions for making boxes and text
     def makeText(self, msg, s=30):
         font = pygame.font.Font('freesansbold.ttf', s)
-##        text = font.render(msg, True, black)
         text = font.render(msg, False, black)
         return text
 
@@ -252,7 +236,7 @@ class UI():
             s = (' '*9)
             self.makeButton(grey,(830-xInc),(505+yInc*2),160,20,(u+s+t+s+c),17)
 
-    #calls both static and dynamic info - consider deleting 
+    #calls both static and dynamic info
     def info(self):
         self.staticInfo()
         self.dynamicInfo()
@@ -279,7 +263,7 @@ class UI():
             c = (Data.cardCount)*5-10  
         self.makeButton(grey,135,472,20,15,str(c),15)
 
-    #calls both static and dynamic legend - consider deleting
+    #calls both static and dynamic legend
     def legend(self):
         self.legendStatic()
         self.legendDynamic()
