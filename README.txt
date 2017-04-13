@@ -2,7 +2,7 @@ Thank you for taking the time to view my Risk simulation I built in Python to pr
 
 If you have any questions, comments, concerns, or would like to hire me, please feel free to contact me. 
 
-WHAT’S NEW
+WHATâ€™S NEW
 
 The entire source code has been reworked to follow OOP principles. The code is now spread between a number of files, making it easier to read through and understand. 
 
@@ -44,7 +44,7 @@ HOW IT WORKS
 
 RiskRaw.py holds raw data including color values, coordinates, and connecting territories, which are used by a number of other files. It has no other classes or methods.
 
-RiskData.py initializes and holds the data structures for the game. There are classes for players, territories, and an overarching data class that will set up arrays for all the territories as well as the players and randomize the territories/units at the start of the game. However, it won’t do this until it is passed a number of players, which is obtained from RiskIntro.py. Since a number of other files make alterations to this data (such as adding new troops, conquering a territory, etc.), it is initialized at the bottom of the file and imported by a number of other files, but the actual data for the game is not initialized until it is called in RiskMain.py. 
+RiskData.py initializes and holds the data structures for the game. There are classes for players, territories, and an overarching data class that will set up arrays for all the territories as well as the players and randomize the territories/units at the start of the game. However, it wonâ€™t do this until it is passed a number of players, which is obtained from RiskIntro.py. Since a number of other files make alterations to this data (such as adding new troops, conquering a territory, etc.), it is initialized at the bottom of the file and imported by a number of other files, but the actual data for the game is not initialized until it is called in RiskMain.py. 
 
 RiskGUI.py initializes pygame and sets up the GUI and user interface (UI), which are separate classes. GUI is primarily concerned with the display of the map, including units, connection lines, and changing colors. UI mostly focuses on the user interface below the map and is responsible for updating it when changes occur, including to the number of units/territories/cards, output to the user, and the current player token. It relies on being able to make changes to the data in RiskData.py and other files in turn rely on RiskGUI.py to make changes to the display, so a GUI and UI class are initialized at the end of the file. 
 
@@ -56,8 +56,10 @@ RiskMain.py holds the main function and is the file which must be run once all t
 
 RedR.png is just a logo for the game that can be seen at the top left of the display window (this may be different for Mac users). It won't affect the game in any meaningful way and can be deleted. A few lines must be removed from the __init__ function in RiskGUI.py so that the program won't crash. 
 
-Map.gif, the main map photo, has very specific RGB values. For the countries, the G value is 150, the B value is 100, and the R value is a number between 1 and 42 (corresponding to the 42 risk territories). The code uses these RGB values (plus (0, 0, 0) for the black outlines and (162, 232, 232) for the water) to create a color-indexed palette, which then alters the values for territories to the color of their owner (or if clicked their owners’ highlight color). A second copy of Map.gif is saved unaltered and used to correctly get the appropriate territory from the player clicking the display, since the RGB values still correspond to their initial values. Please note: if Map.gif is altered in any way, the map may not display properly. 
+Map.gif, the main map photo, has very specific RGB values. For the countries, the G value is 150, the B value is 100, and the R value is a number between 1 and 42 (corresponding to the 42 risk territories). The code uses these RGB values (plus (0, 0, 0) for the black outlines and (162, 232, 232) for the water) to create a color-indexed palette, which then alters the values for territories to the color of their owner (or if clicked their ownersâ€™ highlight color). A second copy of Map.gif is saved unaltered and used to correctly get the appropriate territory from the player clicking the display, since the RGB values still correspond to their initial values. Please note: if Map.gif is altered in any way, the map may not display properly. 
 
 LEGAL DISCLAIMER
 
-Risk is a registered trademark of Parker Brothers. This simulation is for educational purposes only. I do not claim to own any of Parker Brothers’ intellectual property. Please don’t sue me!
+Risk is a registered trademark of Parker Brothers. This simulation is for educational purposes only. I do not claim to own any of Parker Brothersâ€™ intellectual property. Please donâ€™t sue me!
+
+Join the chat at https://gitter.im/Risk2-0/Lobby
